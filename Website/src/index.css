@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100vh;
+  width: 100%;
+}
+
+body {
+  font-family: 'Sora', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  color: #0a0a0a;
+  letter-spacing: -0.3px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.4s ease-out forwards;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s ease-in-out infinite;
+}
+
+.shadow-elevated {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.shadow-hover {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.3s ease;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+@keyframes clarityReveal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes clarityDivider {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.sr-clarity-title {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.sr-clarity-base {
+  color: #0a0a0a;
+  opacity: 0.45;
+  filter: blur(2.4px);
+}
+
+.sr-clarity-title::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: #0a0a0a;
+  opacity: 1;
+  filter: blur(0);
+  clip-path: inset(0 100% 0 0);
+  animation: clarityReveal 2.6s ease-in-out infinite alternate;
+  z-index: 2;
+}
+
+.sr-clarity-title::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0%;
+  width: 2px;
+  height: calc(100% + 4px);
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0.15), rgba(10, 10, 10, 0.95), rgba(10, 10, 10, 0.15));
+  box-shadow: 0 0 8px rgba(10, 10, 10, 0.25);
+  transform: translateX(-1px);
+  animation: clarityDivider 2.6s ease-in-out infinite alternate;
+  z-index: 3;
+}
+
+@media (max-width: 640px) {
+  .sr-clarity-title {
+    display: inline;
+  }
+
+  .sr-clarity-title::before,
+  .sr-clarity-title::after {
+    content: none;
+    animation: none;
+  }
+
+  .sr-clarity-base {
+    opacity: 1;
+    filter: none;
+  }
+}

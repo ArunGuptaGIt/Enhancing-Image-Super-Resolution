@@ -1,0 +1,11 @@
+fastapi>=0.116.0
+uvicorn[standard]>=0.35.0
+python-multipart>=0.0.9
+pillow>=11.2.0
+numpy>=2.2.0
+
+# Optional for Real-ESRGAN runtime backend
+basicsr>=1.4.2
+realesrgan>=0.3.0
+torch>=2.6.0
+torchvision>=0.21.0
